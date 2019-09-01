@@ -49,6 +49,18 @@ class timer {
   }
 };
 
+template <class Func, class... Args, class R>
+R loop_time(const std::string tag, const size_t loop, R &result, Func *func,
+            Args... args) {
+  timer t(tag);
+
+  for (size_t i = 0; i < loop; ++i) {
+    result = func(args...);
+  }
+  t.stop();
+  return result;
+}
+
 template <class Func, class... Args>
 void loop_time(const std::string tag, const size_t loop, Func *func,
                Args... args) {
@@ -57,5 +69,6 @@ void loop_time(const std::string tag, const size_t loop, Func *func,
   for (size_t i = 0; i < loop; ++i) {
     func(args...);
   }
+  t.stop();
 }
 
