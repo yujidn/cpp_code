@@ -14,32 +14,24 @@ auto engine = std::mt19937_64(seed_gen());
 auto int_rand = std::uniform_int_distribution<>(0, 100);
 auto real_rand = std::uniform_real_distribution<>(0.0, 100.0);
 
-std::vector<int> Expansion(std::vector<std::pair<int, int>> &vec) {
-  std::vector<int> result(vec.size());
-  FUNC_TIMER;
-  for (size_t i = 0; i < loop; ++i) {
-    for (size_t j = 0; j < vec.size(); ++j) {
-      auto &v = vec[j];
-      auto &a = v.first;
-      auto &b = v.second;
-      result[j] = a * a * a + 3 * a * a * b + 3 * a * b * b + b * b * b;
-    }
+void Expansion(const std::vector<std::pair<int, int>> &vec,
+               std::vector<int> &result) {
+  for (size_t j = 0; j < vec.size(); ++j) {
+    auto &v = vec[j];
+    auto &a = v.first;
+    auto &b = v.second;
+    result[j] = a * a * a + 3 * a * a * b + 3 * a * b * b + b * b * b;
   }
-  return result;
 }
-std::vector<int> Factorization(std::vector<std::pair<int, int>> &vec) {
-  std::vector<int> result(vec.size());
-  FUNC_TIMER;
-  for (size_t i = 0; i < loop; ++i) {
-    for (size_t j = 0; j < vec.size(); ++j) {
-      auto &v = vec[j];
-      auto &a = v.first;
-      auto &b = v.second;
-      auto temp = a + b;
-      result[j] = temp * temp * temp;
-    }
+void Factorization(const std::vector<std::pair<int, int>> &vec,
+                   std::vector<int> &result) {
+  for (size_t j = 0; j < vec.size(); ++j) {
+    auto &v = vec[j];
+    auto &a = v.first;
+    auto &b = v.second;
+    auto temp = a + b;
+    result[j] = temp * temp * temp;
   }
-  return result;
 }
 
 int main() {
@@ -47,9 +39,11 @@ int main() {
   for (size_t i = 0; i < vector_num; ++i) {
     vec_i[i] = std::make_pair(int_rand(engine), int_rand(engine));
   }
-  auto vec1 = Expansion(vec_i);
-  auto vec2 = Factorization(vec_i);
-  std::cout << vec1[0] << "," << vec2[0] << std::endl;
+  std::vector<int> result(vec_i.size());
+
+  loop_time("expansion", loop, Expansion, vec_i, result);
+  loop_time("factorization", loop, Factorization, vec_i, result);
+  std::cout << result[0] << std::endl;
 
   return 0;
 }

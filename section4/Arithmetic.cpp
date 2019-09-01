@@ -16,41 +16,30 @@ auto real_rand = std::uniform_real_distribution<>(0.0, 100.0);
 
 template <typename T>
 void add(std::vector<T> &vec) {
-  FUNC_TIMER;
-  for (size_t i = 0; i < loop; ++i) {
-    for (auto &v : vec) {
-      v.first = v.first + v.second;
-    }
+  for (auto &v : vec) {
+    v.first = v.first + v.second;
   }
   return;
 }
+
 template <typename T>
 void sub(std::vector<T> &vec) {
-  FUNC_TIMER;
-  for (size_t i = 0; i < loop; ++i) {
-    for (auto &v : vec) {
-      v.first = v.first - v.second;
-    }
+  for (auto &v : vec) {
+    v.first = v.first - v.second;
   }
   return;
 }
 template <typename T>
 void mul(std::vector<T> &vec) {
-  FUNC_TIMER;
-  for (size_t i = 0; i < loop; ++i) {
-    for (auto &v : vec) {
-      v.first = v.first * v.second;
-    }
+  for (auto &v : vec) {
+    v.first = v.first * v.second;
   }
   return;
 }
 template <typename T>
 void div(std::vector<T> &vec) {
-  FUNC_TIMER;
-  for (size_t i = 0; i < loop; ++i) {
-    for (auto &v : vec) {
-      v.first = v.first / v.second;
-    }
+  for (auto &v : vec) {
+    v.first = v.first / v.second;
   }
   return;
 }
@@ -68,28 +57,28 @@ int main() {
                               static_cast<float>(vec_d[i].second));
   }
   std::cout << "---long---" << std::endl;
-  add(vec_i);
-  sub(vec_i);
-  mul(vec_i);
-  div(vec_i);
+  loop_time("long add", loop, (void (*)(decltype(vec_i) &))(add), vec_i);
+  loop_time("long sub", loop, (void (*)(decltype(vec_i) &))(sub), vec_i);
+  loop_time("long mul", loop, (void (*)(decltype(vec_i) &))(mul), vec_i);
+  loop_time("long div", loop, (void (*)(decltype(vec_i) &))(div), vec_i);
 
   std::cout << "---long long---" << std::endl;
-  add(vec_l);
-  sub(vec_l);
-  mul(vec_l);
-  div(vec_l);
+  loop_time("long long add", loop, (void (*)(decltype(vec_l) &))(add), vec_l);
+  loop_time("long long sub", loop, (void (*)(decltype(vec_l) &))(sub), vec_l);
+  loop_time("long long mul", loop, (void (*)(decltype(vec_l) &))(mul), vec_l);
+  loop_time("long long div", loop, (void (*)(decltype(vec_l) &))(div), vec_l);
 
   std::cout << "---float---" << std::endl;
-  add(vec_f);
-  sub(vec_f);
-  mul(vec_f);
-  div(vec_f);
+  loop_time("float add", loop, (void (*)(decltype(vec_f) &))(add), vec_f);
+  loop_time("float sub", loop, (void (*)(decltype(vec_f) &))(sub), vec_f);
+  loop_time("float mul", loop, (void (*)(decltype(vec_f) &))(mul), vec_f);
+  loop_time("float div", loop, (void (*)(decltype(vec_f) &))(div), vec_f);
 
   std::cout << "---double---" << std::endl;
-  add(vec_d);
-  sub(vec_d);
-  mul(vec_d);
-  div(vec_d);
+  loop_time("double add", loop, (void (*)(decltype(vec_d) &))(add), vec_d);
+  loop_time("double sub", loop, (void (*)(decltype(vec_d) &))(sub), vec_d);
+  loop_time("double mul", loop, (void (*)(decltype(vec_d) &))(mul), vec_d);
+  loop_time("double div", loop, (void (*)(decltype(vec_d) &))(div), vec_d);
   return 0;
 }
 

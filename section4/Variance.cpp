@@ -41,32 +41,14 @@ double expansion_variance(const std::vector<double> &vec) {
   return sumsum / vec.size() - average * average;
 }
 
-double variance_loop(std::vector<double> &vec) {
-  FUNC_TIMER;
-  double sum = 0;
-  for (size_t i = 0; i < loop; ++i) {
-    vec[i] = variance(vec);
-  }
-  return sum;
-}
-
-double expansion_variance_loop(std::vector<double> &vec) {
-  FUNC_TIMER;
-  double sum = 0;
-  for (size_t i = 0; i < loop; ++i) {
-    vec[i] = expansion_variance(vec);
-  }
-  return sum;
-}
-
 int main() {
   std::vector<double> vec(vector_num);
   for (size_t i = 0; i < vector_num; ++i) {
     vec[i] = real_rand(engine);
   }
   double sum = 0.0;
-  sum += variance_loop(vec);
-  sum += expansion_variance_loop(vec);
+  loop_time("variance", loop, sum, variance, vec);
+  loop_time("expansion variance", loop, sum, expansion_variance, vec);
 
   return 0;
 }

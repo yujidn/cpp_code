@@ -18,93 +18,63 @@ auto real_rand = std::uniform_real_distribution<>(0.0, 10.0);
 
 template <typename T>
 void sin(std::vector<std::pair<T, T>> &vec) {
-  FUNC_TIMER;
-  for (size_t i = 0; i < loop; ++i) {
-    for (auto &v : vec) {
-      v.second = std::sin(v.first);
-    }
+  for (auto &v : vec) {
+    v.second = std::sin(v.first);
   }
 }
 template <typename T>
 void cos(std::vector<std::pair<T, T>> &vec) {
-  FUNC_TIMER;
-  for (size_t i = 0; i < loop; ++i) {
-    for (auto &v : vec) {
-      v.second = std::cos(v.first);
-    }
+  for (auto &v : vec) {
+    v.second = std::cos(v.first);
   }
 }
 template <typename T>
 void tan(std::vector<std::pair<T, T>> &vec) {
-  FUNC_TIMER;
-  for (size_t i = 0; i < loop; ++i) {
-    for (auto &v : vec) {
-      v.second = std::tan(v.first);
-    }
+  for (auto &v : vec) {
+    v.second = std::tan(v.first);
   }
 }
 template <typename T>
 void asin(std::vector<std::pair<T, T>> &vec) {
-  FUNC_TIMER;
-  for (size_t i = 0; i < loop; ++i) {
-    for (auto &v : vec) {
-      v.second = std::asin(v.first);
-    }
+  for (auto &v : vec) {
+    v.second = std::asin(v.first);
   }
 }
 template <typename T>
 void acos(std::vector<std::pair<T, T>> &vec) {
-  FUNC_TIMER;
-  for (size_t i = 0; i < loop; ++i) {
-    for (auto &v : vec) {
-      v.second = std::acos(v.first);
-    }
+  for (auto &v : vec) {
+    v.second = std::acos(v.first);
   }
 }
 template <typename T>
 void atan(std::vector<std::pair<T, T>> &vec) {
-  FUNC_TIMER;
-  for (size_t i = 0; i < loop; ++i) {
-    for (auto &v : vec) {
-      v.second = std::atan(v.first);
-    }
+  for (auto &v : vec) {
+    v.second = std::atan(v.first);
   }
 }
 
 template <typename T>
 void exp(std::vector<std::pair<T, T>> &vec) {
-  FUNC_TIMER;
-  for (size_t i = 0; i < loop; ++i) {
-    for (auto &v : vec) {
-      v.second = std::exp(v.first);
-    }
+  for (auto &v : vec) {
+    v.second = std::exp(v.first);
   }
 }
 template <typename T>
 void log(std::vector<std::pair<T, T>> &vec) {
-  FUNC_TIMER;
-  for (size_t i = 0; i < loop; ++i) {
-    for (auto &v : vec) {
-      v.second = std::log(v.first);
-    }
+  for (auto &v : vec) {
+    v.second = std::log(v.first);
   }
 }
 template <typename T>
 void sqrt(std::vector<std::pair<T, T>> &vec) {
-  FUNC_TIMER;
-  for (size_t i = 0; i < loop; ++i) {
-    for (auto &v : vec) {
-      v.second = std::sqrt(v.first);
-    }
+  for (auto &v : vec) {
+    v.second = std::sqrt(v.first);
   }
 }
 template <typename T>
 void pow(std::vector<std::pair<T, T>> &vec) {
-  FUNC_TIMER;
-  for (size_t i = 0; i < loop; ++i) {
-    for (auto &v : vec) {
-      v.second = std::pow(v.first, v.second);
-    }
+  for (auto &v : vec) {
+    v.second = std::pow(v.first, v.second);
   }
   return;
 }
@@ -118,28 +88,28 @@ int main() {
   }
 
   std::cout << "---float---" << std::endl;
-  sin(vec_f);
-  cos(vec_f);
-  tan(vec_f);
-  asin(vec_f);
-  acos(vec_f);
-  atan(vec_f);
-  exp(vec_f);
-  log(vec_f);
-  sqrt(vec_f);
-  pow(vec_f);
+  loop_time("float sin", loop, (void (*)(decltype(vec_f) &))(sin), vec_f);
+  loop_time("float cos", loop, (void (*)(decltype(vec_f) &))(cos), vec_f);
+  loop_time("float tan", loop, (void (*)(decltype(vec_f) &))(tan), vec_f);
+  loop_time("float asin", loop, (void (*)(decltype(vec_f) &))(asin), vec_f);
+  loop_time("float acos", loop, (void (*)(decltype(vec_f) &))(acos), vec_f);
+  loop_time("float atan", loop, (void (*)(decltype(vec_f) &))(atan), vec_f);
+  loop_time("float exp", loop, (void (*)(decltype(vec_f) &))(exp), vec_f);
+  loop_time("float log", loop, (void (*)(decltype(vec_f) &))(log), vec_f);
+  loop_time("float sqrt", loop, (void (*)(decltype(vec_f) &))(sqrt), vec_f);
+  loop_time("float pow", loop, (void (*)(decltype(vec_f) &))(pow), vec_f);
 
   std::cout << "---double---" << std::endl;
-  sin(vec_d);
-  cos(vec_d);
-  tan(vec_d);
-  asin(vec_d);
-  acos(vec_d);
-  atan(vec_d);
-  exp(vec_d);
-  log(vec_d);
-  sqrt(vec_d);
-  pow(vec_d);
+  loop_time("double sin", loop, (void (*)(decltype(vec_d) &))(sin), vec_d);
+  loop_time("double cos", loop, (void (*)(decltype(vec_d) &))(cos), vec_d);
+  loop_time("double tan", loop, (void (*)(decltype(vec_d) &))(tan), vec_d);
+  loop_time("double asin", loop, (void (*)(decltype(vec_d) &))(asin), vec_d);
+  loop_time("double acos", loop, (void (*)(decltype(vec_d) &))(acos), vec_d);
+  loop_time("double atan", loop, (void (*)(decltype(vec_d) &))(atan), vec_d);
+  loop_time("double exp", loop, (void (*)(decltype(vec_d) &))(exp), vec_d);
+  loop_time("double log", loop, (void (*)(decltype(vec_d) &))(log), vec_d);
+  loop_time("double sqrt", loop, (void (*)(decltype(vec_d) &))(sqrt), vec_d);
+  loop_time("double pow", loop, (void (*)(decltype(vec_d) &))(pow), vec_d);
 
   return 0;
 }

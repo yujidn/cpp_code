@@ -32,31 +32,25 @@ struct constexpr_calced_asin {
 
 double kodo2kakudo(double t) { return t * 180 / M_PI; }
 
-double asin(const std::vector<double> &vec) {
-  FUNC_TIMER;
+double vasin(const std::vector<double> &vec) {
   double sum = 0;
-  for (size_t i = 0; i < loop; ++i) {
-    for (const auto &v : vec) {
-      sum += std::asin(v);
-    }
+  for (const auto &v : vec) {
+    sum += std::asin(v);
   }
   return sum;
 }
 
-double constexpr_asin(const std::vector<double> &vec) {
-  FUNC_TIMER;
-  constexpr auto calced_asin = constexpr_calced_asin<N>();
+double calced_asin(const std::vector<double> &vec,
+                   const constexpr_calced_asin<N> &calced_asin) {
   double sum = 0;
-  for (size_t i = 0; i < loop; ++i) {
-    for (const auto &v : vec) {
-      sum += calced_asin.get_asin(v);
-    }
+  for (const auto &v : vec) {
+    sum += calced_asin.get_asin(v);
   }
   return sum;
 }
 
 int main() {
-  constexpr auto calced_asin = constexpr_calced_asin<N>();
+  auto casin = constexpr_calced_asin<N>();
   std::vector<double> vec(vector_num);
   for (size_t i = 0; i < vector_num; ++i) {
     vec[i] = real_rand(engine);
@@ -64,24 +58,13 @@ int main() {
 
   double sum = 0;
   for (auto &v : vec) {
-    sum += std::abs(kodo2kakudo(std::asin(v)) -
-                    kodo2kakudo(calced_asin.get_asin(v)));
+    sum += std::abs(kodo2kakudo(std::asin(v)) - kodo2kakudo(casin.get_asin(v)));
   }
   std::cout << sum / vec.size() << std::endl;
 
-  loop_time(
-      "asin", loop,
-      [](const std::vector<double> &vec) {
-        FUNC_TIMER;
-        double sum = 0;
-        for (const auto &v : vec) {
-          sum += std::asin(v);
-        }
-      },
-      vec);
+  loop_time("asin", loop, sum, vasin, vec);
+  loop_time("calced_asin", loop, sum, calced_asin, vec, casin);
 
-  sum += asin(vec);
-  sum += constexpr_asin(vec);
   std::cout << sum << std::endl;
   return 0;
 }

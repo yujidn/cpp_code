@@ -14,21 +14,15 @@ auto int_rand = std::uniform_int_distribution<>(1, 1 << 30);
 
 template <typename T>
 void mod(std::vector<T> &vec) {
-  FUNC_TIMER;
-  for (size_t i = 0; i < loop; ++i) {
-    for (auto &v : vec) {
-      v.first = v.first % v.second;
-    }
+  for (auto &v : vec) {
+    v.first = v.first % v.second;
   }
   return;
 }
 template <typename T>
 void mod2power(std::vector<T> &vec) {
-  FUNC_TIMER;
-  for (size_t i = 0; i < loop; ++i) {
-    for (auto &v : vec) {
-      v.first = v.first & (v.second - 1);
-    }
+  for (auto &v : vec) {
+    v.first = v.first & (v.second - 1);
   }
   return;
 }
@@ -47,12 +41,14 @@ int main() {
         std::make_pair(int_rand(engine), 1 << (int_rand(engine) % 31));
   }
   std::cout << "---long---" << std::endl;
-  mod(vec_i);
-  mod2power(vec_i2power);
+  loop_time("long mod", loop, (void (*)(decltype(vec_i) &))(mod), vec_i);
+  loop_time("long mod2power", loop,
+            (void (*)(decltype(vec_i2power) &))(mod2power), vec_i2power);
 
   std::cout << "---long long---" << std::endl;
-  mod(vec_l);
-  mod2power(vec_l2power);
+  loop_time("long long mod", loop, (void (*)(decltype(vec_l) &))(mod), vec_l);
+  loop_time("long long mod2power", loop,
+            (void (*)(decltype(vec_l2power) &))(mod2power), vec_l2power);
 
   return 0;
 }
