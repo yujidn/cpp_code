@@ -20,20 +20,12 @@ void plus_one(std::vector<uint64_t> &vec) {
 }
 
 void plus_one_by_func(std::vector<uint64_t> &vec) {
-  FUNC_TIMER;
-  for (size_t i = 0; i < loop; ++i) {
-    for (auto &v : vec) {
-      plus_one(v);
-    }
+  for (auto &v : vec) {
+    plus_one(v);
   }
 }
 
-void plus_one_by_ref_loop(std::vector<uint64_t> &vec) {
-  FUNC_TIMER;
-  for (size_t i = 0; i < loop; ++i) {
-    plus_one(vec);
-  }
-}
+void plus_one_by_loop(std::vector<uint64_t> &vec) { plus_one(vec); }
 
 int main(void) {
   std::vector<uint64_t> vec(vector_num);
@@ -41,8 +33,8 @@ int main(void) {
     vec[i] = int_rand(engine);
   }
 
-  plus_one_by_func(vec);
-  plus_one_by_ref_loop(vec);
+  loop_time("plus one by func", loop, plus_one_by_func, vec);
+  loop_time("plus one by loop", loop, plus_one_by_loop, vec);
 
   size_t sum = 0;
   for (auto &v : vec) {
