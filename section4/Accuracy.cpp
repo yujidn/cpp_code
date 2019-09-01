@@ -69,6 +69,17 @@ int main() {
   }
   std::cout << sum / vec.size() << std::endl;
 
+  loop_time(
+      "asin", loop,
+      [](const std::vector<double> &vec) {
+        FUNC_TIMER;
+        double sum = 0;
+        for (const auto &v : vec) {
+          sum += std::asin(v);
+        }
+      },
+      vec);
+
   sum += asin(vec);
   sum += constexpr_asin(vec);
   std::cout << sum << std::endl;
