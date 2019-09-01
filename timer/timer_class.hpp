@@ -54,11 +54,10 @@ R loop_time(const std::string tag, const size_t loop, R &result, Func *func,
             Args &&... args) {
   timer t(tag);
 
-  R sum = 0;
   for (size_t i = 0; i < loop; ++i) {
-    sum += func(args...);
+    result = func(args...);
   }
-  return sum;
+  return result;
 }
 
 template <class Func, class... Args>
