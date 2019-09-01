@@ -14,30 +14,18 @@ auto real_rand = std::uniform_real_distribution<>(0.0, 5.0);
 std::vector<float> randvec(vector_num);
 
 void every_new(double &sum) {
-  FUNC_TIMER;
-  for (size_t i = 0; i < loop; ++i) {
-    double *vec = new double[vector_num];
-    for (size_t j = 0; j < vector_num; ++j) {
-      vec[j] = randvec[j];
-    }
-    for (size_t j = 0; j < vector_num; ++j) {
-      sum += vec[i];
-    }
-    delete[] vec;
-  }
-}
-void first_new(double &sum) {
-  FUNC_TIMER;
   double *vec = new double[vector_num];
-  for (size_t i = 0; i < loop; ++i) {
-    for (size_t j = 0; j < vector_num; ++j) {
-      vec[i] = randvec[i];
-    }
-    for (size_t j = 0; j < vector_num; ++j) {
-      sum += vec[i];
-    }
+  for (size_t j = 0; j < vector_num; ++j) {
+    vec[j] = randvec[j];
+    sum += vec[j];
   }
   delete[] vec;
+}
+void no_new(double &sum, double *vec) {
+  for (size_t j = 0; j < vector_num; ++j) {
+    vec[j] = randvec[j];
+    sum += vec[j];
+  }
 }
 
 int main(void) {
@@ -46,9 +34,11 @@ int main(void) {
     randvec[i] = real_rand(engine);
   }
 
-  every_new(sum);
-
-  first_new(sum);
+  loop_time("every new", loop, every_new, sum);
+  double *vec = new double[vector_num];
+  loop_time("no new", loop, no_new, sum, vec);
+  delete[] vec;
 
   std::cout << sum << std::endl;
+  return 0;
 }
