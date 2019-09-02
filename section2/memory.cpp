@@ -4,9 +4,9 @@
 #include <vector>
 
 // 10^9
-const uint64_t vector_num = 100000000;
-// 10^7
-const uint64_t access_num = 1000000;
+const uint64_t vector_num = 1000 * 1000 * 1000;
+// 10^6
+const uint64_t access_num = 1000 * 1000;
 std::random_device seed_gen;
 
 auto engine = std::mt19937_64(seed_gen());
@@ -15,18 +15,19 @@ int main() {
   // 仮データを作る
   std::vector<int> vec(vector_num);
   // 仮データにアクセスする要素を貯める用
-  std::vector<int> access;
-  access.reserve(access_num);
+  std::vector<int> access(access_num);
+
+  uint64_t sum = 0;
 
   // 仮データにアクセスする最大値を決めてループする
   for (uint64_t size = 1; size <= vector_num; size = size * 10) {
     // 0～size未満の一様分布
+    // 配列内のアクセスする範囲を限定する
     auto rand = std::uniform_int_distribution<>(0, size);
 
-    // 仮データにアクセスする添え字配列を作る 添え字の値域は0~size未満
-    access.clear();
-    for (size_t i = 0; i < access_num; ++i) {
-      access.push_back(rand(engine));
+    // どこにアクセスするかを決める配列を作る
+    for (auto &acc : access) {
+      acc = rand(engine);
     }
 
     // タイマースタート
@@ -34,6 +35,7 @@ int main() {
         std::chrono::system_clock::now();
     // 仮データに適当にアクセスする
     for (const auto &acc : access) {
+      // accは0~sizeの間からランダムになる
       vec[acc] += 1;
     }
     // タイマーエンド
@@ -46,6 +48,12 @@ int main() {
             .count();
     // アクセス範囲と時間を表示する
     std::cout << size << "," << count << std::endl;
+
+    // 最適化で時間計測部分が消えないようにする
+    for (const auto &v : vec) {
+      sum += v;
+    }
   }
+  std::cout << sum << std::endl;
   return 0;
 }
