@@ -15,9 +15,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
 # set(CMAKE_CXX_FLAGS_MINSIZEREL "-Os -s -DNDEBUG -march=native")
 
 # 
-add_executable(chrono_cost chrono_cost.cpp)
-add_executable(chrono_sample chrono_sample.cpp)
-add_executable(chrono_stdev chrono_stdev.cpp)
-add_executable(gprof_sample gprof_sample.cpp)
-add_executable(inf_loop inf_loop.cpp)
+add_executable(memory memory.cpp)
+add_executable(pipline pipline.cpp)
 
