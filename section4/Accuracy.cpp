@@ -9,8 +9,8 @@
 const uint64_t N = 1000;
 // 10^6
 const uint64_t vector_num = 1000 * 1000;
-// 10^3
-const size_t loop = 1000;
+// 10^0
+const size_t loop = 1;
 std::random_device seed_gen;
 auto engine = std::mt19937_64(seed_gen());
 auto real_rand = std::uniform_real_distribution<>(-1.0, 1.0);

@@ -15,7 +15,7 @@ auto int_rand = std::uniform_int_distribution<>(0, 100);
 auto real_rand = std::uniform_real_distribution<>(0.0, 100.0);
 
 template <typename T>
-void add(std::vector<T> &vec) {
+void add(std::vector<std::pair<T, T>> &vec) {
   for (auto &v : vec) {
     v.first = v.first + v.second;
   }
@@ -23,21 +23,21 @@ void add(std::vector<T> &vec) {
 }
 
 template <typename T>
-void sub(std::vector<T> &vec) {
+void sub(std::vector<std::pair<T, T>> &vec) {
   for (auto &v : vec) {
     v.first = v.first - v.second;
   }
   return;
 }
 template <typename T>
-void mul(std::vector<T> &vec) {
+void mul(std::vector<std::pair<T, T>> &vec) {
   for (auto &v : vec) {
     v.first = v.first * v.second;
   }
   return;
 }
 template <typename T>
-void div(std::vector<T> &vec) {
+void div(std::vector<std::pair<T, T>> &vec) {
   for (auto &v : vec) {
     v.first = v.first / v.second;
   }

@@ -13,14 +13,14 @@ auto engine = std::mt19937_64(seed_gen());
 auto int_rand = std::uniform_int_distribution<>(1, 1 << 30);
 
 template <typename T>
-void mod(std::vector<T> &vec) {
+void mod(std::vector<std::pair<T, T>> &vec) {
   for (auto &v : vec) {
     v.first = v.first % v.second;
   }
   return;
 }
 template <typename T>
-void mod2power(std::vector<T> &vec) {
+void mod2power(std::vector<std::pair<T, T>> &vec) {
   for (auto &v : vec) {
     v.first = v.first & (v.second - 1);
   }

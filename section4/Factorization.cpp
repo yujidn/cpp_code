@@ -5,10 +5,10 @@
 
 #include "../timer/timer_class.hpp"
 
-// 10^3
-const uint64_t vector_num = 1000;
 // 10^6
-const size_t loop = 1000 * 1000;
+const uint64_t vector_num = 1000 * 1000;
+// 10^3
+const size_t loop = 1000;
 std::random_device seed_gen;
 auto engine = std::mt19937_64(seed_gen());
 auto int_rand = std::uniform_int_distribution<>(0, 100);

@@ -15,42 +15,42 @@ auto int_rand = std::uniform_int_distribution<>(0, 100);
 auto shift_rand = std::uniform_int_distribution<>(1, 31);
 
 template <typename T>
-void And(std::vector<T> &vec) {
+void And(std::vector<std::pair<T, T>> &vec) {
   for (auto &v : vec) {
     v.first = v.first & v.second;
   }
   return;
 }
 template <typename T>
-void Or(std::vector<T> &vec) {
+void Or(std::vector<std::pair<T, T>> &vec) {
   for (auto &v : vec) {
     v.first = v.first | v.second;
   }
   return;
 }
 template <typename T>
-void Not(std::vector<T> &vec) {
+void Not(std::vector<std::pair<T, T>> &vec) {
   for (auto &v : vec) {
     v.first = ~v.first;
   }
   return;
 }
 template <typename T>
-void Exclusive(std::vector<T> &vec) {
+void Exclusive(std::vector<std::pair<T, T>> &vec) {
   for (auto &v : vec) {
     v.first = v.first ^ v.second;
   }
   return;
 }
 template <typename T>
-void Lshift(std::vector<T> &vec) {
+void Lshift(std::vector<std::pair<T, T>> &vec) {
   for (auto &v : vec) {
     v.first = v.first << v.second;
   }
   return;
 }
 template <typename T>
-void Rshift(std::vector<T> &vec) {
+void Rshift(std::vector<std::pair<T, T>> &vec) {
   for (auto &v : vec) {
     v.first = v.first >> v.second;
   }
@@ -75,13 +75,15 @@ int main() {
   loop_time("long rshift", loop, (void (*)(decltype(vec_i) &))(Rshift), vec_i);
 
   std::cout << "---long long---" << std::endl;
-  loop_time("long and", loop, (void (*)(decltype(vec_l) &))(And), vec_l);
-  loop_time("long or", loop, (void (*)(decltype(vec_l) &))(Or), vec_l);
-  loop_time("long not", loop, (void (*)(decltype(vec_l) &))(Not), vec_l);
-  loop_time("long exclusive", loop, (void (*)(decltype(vec_l) &))(Exclusive),
+  loop_time("long long and", loop, (void (*)(decltype(vec_l) &))(And), vec_l);
+  loop_time("long long or", loop, (void (*)(decltype(vec_l) &))(Or), vec_l);
+  loop_time("long long not", loop, (void (*)(decltype(vec_l) &))(Not), vec_l);
+  loop_time("long long exclusive", loop,
+            (void (*)(decltype(vec_l) &))(Exclusive), vec_l);
+  loop_time("long long lshift", loop, (void (*)(decltype(vec_l) &))(Lshift),
             vec_l);
-  loop_time("long lshift", loop, (void (*)(decltype(vec_l) &))(Lshift), vec_l);
-  loop_time("long rshift", loop, (void (*)(decltype(vec_l) &))(Rshift), vec_l);
+  loop_time("long long rshift", loop, (void (*)(decltype(vec_l) &))(Rshift),
+            vec_l);
 
   return 0;
 }
