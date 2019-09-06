@@ -4,9 +4,9 @@
 
 #include "../timer/timer_class.hpp"
 
-// 10^3
-const uint64_t vector_num = 1000 * 1000;
 // 10^6
+const uint64_t vector_num = 1000 * 1000;
+// 10^3
 const size_t loop = 1000;
 std::random_device seed_gen;
 auto engine = std::mt19937_64(seed_gen());
@@ -52,6 +52,7 @@ int get_vec_by_reference(vector_class &vec_class) {
   int sum = 0;
   for (size_t i = 0; i < loop; ++i) {
     auto &vec = vec_class.get_vec_by_reference();
+    vec[i] = i;
     sum += vec[i];
   }
   return sum;

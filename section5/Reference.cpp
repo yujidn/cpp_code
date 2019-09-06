@@ -1,42 +1,56 @@
 #include <iostream>
 
-class ConstractShow {
+class constract_show {
  public:
   int val;
-  ConstractShow(int v) {
+
+  constract_show(int v) {
     val = v;
     std::cout << "Constract" << std::endl;
   }
-  ~ConstractShow() { std::cout << "Destract" << std::endl; }
-  ConstractShow(const ConstractShow &show) : val(show.val) {
+  ~constract_show() { std::cout << "Destract" << std::endl; }
+  constract_show(const constract_show &show) : val(show.val) {
     std::cout << "Copy" << std::endl;
   }
 };
 
-void CallByValue(ConstractShow show) {
+constract_show show(1);
+
+void call_by_value(constract_show show) {
   std::cout << __FUNCTION__ << std::endl;
   show.val += 1;
   std::cout << show.val << std::endl;
 }
 
-void ReferenceValue(ConstractShow &show) {
+void reference_value(constract_show &show) {
   std::cout << __FUNCTION__ << std::endl;
   show.val += 1;
   std::cout << show.val << std::endl;
 }
 
-void ConstReferenceValue(const ConstractShow &show) {
+void const_reference_value(const constract_show &show) {
   std::cout << __FUNCTION__ << std::endl;
   // compile error!!
   // show.val += 1;
   std::cout << show.val << std::endl;
 }
 
+constract_show get_value() {
+  std::cout << __FUNCTION__ << std::endl;
+  return show;
+}
+constract_show &get_reference() {
+  std::cout << __FUNCTION__ << std::endl;
+  return show;
+}
+
 int main(void) {
-  ConstractShow show(1);
-  std::cout << "call start" << std::endl;
-  CallByValue(show);
-  ReferenceValue(show);
-  ConstReferenceValue(show);
-  std::cout << "call end" << std::endl;
+  std::cout << "start" << std::endl;
+  call_by_value(show);
+  reference_value(show);
+  const_reference_value(show);
+  auto v1 = get_value();
+  auto v2 = get_reference();
+  auto &v3 = get_reference();
+  std::cout << "end" << std::endl;
 }
