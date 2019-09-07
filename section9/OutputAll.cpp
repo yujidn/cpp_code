@@ -8,6 +8,7 @@ const size_t one_line_char_num = 100;
 const size_t line_num = 1000 * 1000;
 
 void output_string(std::ofstream &file, const std::string &str) { file << str; }
+
 int main() {
   std::ofstream f("outputAll.txt", std::ios_base::out);
 

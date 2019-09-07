@@ -22,6 +22,6 @@ int main() {
 
   timer t;
   output_string(f, s.str());
-  t.print("output_all_lf");
+  t.print("output_all_LF");
   return 0;
 }

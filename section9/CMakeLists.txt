@@ -22,7 +22,6 @@ add_executable(Output1LineLF Output1LineLF.cpp)
 add_executable(OutputAll OutputAll.cpp)
 add_executable(OutputAllLF OutputAllLF.cpp)
 add_executable(OutputBinary OutputBinary.cpp)
-
 add_executable(Input1char Input1char.cpp)
 add_executable(Input1Line Input1Line.cpp)
 add_executable(InputAll InputAll.cpp)

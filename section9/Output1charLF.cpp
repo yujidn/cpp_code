@@ -16,6 +16,6 @@ int main() {
     }
     f << "\n";
   }
-  t.print("output_1char");
+  t.print("output_1char_LF");
   return 0;
 }
