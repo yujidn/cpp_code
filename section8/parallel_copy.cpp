@@ -43,25 +43,25 @@ int main() {
     t.restart();
     std::copy(vec.begin(), vec.end(), copy_vec.begin());
 
-    t.print("vector_copy");
+    t.print("copy");
     t.restart();
 
     std::copy(std::execution::seq, vec_for_seq.begin(), vec_for_seq.end(),
               copy_vec.begin());
 
-    t.print("vector_seq_copy");
+    t.print("seq_copy");
     t.restart();
 
     std::copy(std::execution::par, vec_for_par.begin(), vec_for_par.end(),
               copy_vec.begin());
 
-    t.print("vector_par_copy");
+    t.print("par_copy");
     t.restart();
 
     std::copy(std::execution::par_unseq, vec_for_par_unseq.begin(),
               vec_for_par_unseq.end(), copy_vec.begin());
 
-    t.print("vector_par_unseq_copy");
+    t.print("par_unseq_copy");
     t.restart();
 
     std::memcpy(&(copy_vec[0]), &(vec[0]), size * sizeof(int));

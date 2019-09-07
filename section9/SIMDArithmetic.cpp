@@ -31,13 +31,14 @@ int main() {
     __m256i m256i;
 
     std::cout << std::hex;
-    std::cout << "__m128 :0x" << sizeof(__m128) << " 0x"
+    std::cout << "type    sizeof address" << std::endl;
+    std::cout << "__m128  0x" << sizeof(__m128) << " 0x"
               << reinterpret_cast<long long>(&m128) << std::endl;
-    std::cout << "__m128i:0x" << sizeof(__m128i) << " 0x"
+    std::cout << "__m128i 0x" << sizeof(__m128i) << " 0x"
               << reinterpret_cast<long long>(&m128i) << std::endl;
-    std::cout << "__m256 :0x" << sizeof(__m256) << " 0x"
+    std::cout << "__m256  0x" << sizeof(__m256) << " 0x"
               << reinterpret_cast<long long>(&m256) << std::endl;
-    std::cout << "__m256i:0x" << sizeof(__m256i) << " 0x"
+    std::cout << "__m256i 0x" << sizeof(__m256i) << " 0x"
               << reinterpret_cast<long long>(&m256i) << std::endl;
   }
   __m128 src1, src2, dst;

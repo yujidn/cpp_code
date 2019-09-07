@@ -40,25 +40,25 @@ int main() {
     t.restart();
     std::stable_sort(vec.begin(), vec.end());
 
-    t.print("vector_stable_sort");
+    t.print("stable_sort");
     t.restart();
 
     std::stable_sort(std::execution::seq, vec_for_seq.begin(),
                      vec_for_seq.end());
 
-    t.print("vector_seq_stable_sort");
+    t.print("seq_stable_sort");
     t.restart();
 
     std::stable_sort(std::execution::par, vec_for_par.begin(),
                      vec_for_par.end());
 
-    t.print("vector_par_stable_sort");
+    t.print("par_stable_sort");
     t.restart();
 
     std::stable_sort(std::execution::par_unseq, vec_for_par_unseq.begin(),
                      vec_for_par_unseq.end());
 
-    t.print("vector_par_unseq_stable_sort");
+    t.print("par_unseq_stable_sort");
   }
   return 0;
 }

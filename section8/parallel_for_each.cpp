@@ -46,25 +46,25 @@ int main() {
     t.restart();
     std::for_each(vec.begin(), vec.end(), add_operation);
 
-    t.print("vector_for_each");
+    t.print("for_each");
     t.restart();
 
     std::for_each(std::execution::seq, vec_for_seq.begin(), vec_for_seq.end(),
                   add_operation);
 
-    t.print("vector_seq_for_each");
+    t.print("seq_for_each");
     t.restart();
 
     std::for_each(std::execution::par, vec_for_par.begin(), vec_for_par.end(),
                   add_operation);
 
-    t.print("vector_par_for_each");
+    t.print("par_for_each");
     t.restart();
 
     std::for_each(std::execution::par_unseq, vec_for_par_unseq.begin(),
                   vec_for_par_unseq.end(), add_operation);
 
-    t.print("vector_par_unseq_for_each");
+    t.print("par_unseq_for_each");
   }
   return 0;
 }

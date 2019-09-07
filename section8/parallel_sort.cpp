@@ -40,23 +40,23 @@ int main() {
     t.restart();
     std::sort(vec.begin(), vec.end());
 
-    t.print("vector_sort");
+    t.print("sort");
     t.restart();
 
     std::sort(std::execution::seq, vec_for_seq.begin(), vec_for_seq.end());
 
-    t.print("vector_seq_sort");
+    t.print("seq_sort");
     t.restart();
 
     std::sort(std::execution::par, vec_for_par.begin(), vec_for_par.end());
 
-    t.print("vector_par_sort");
+    t.print("par_sort");
     t.restart();
 
     std::sort(std::execution::par_unseq, vec_for_par_unseq.begin(),
               vec_for_par_unseq.end());
 
-    t.print("vector_par_unseq_sort");
+    t.print("par_unseq_sort");
   }
   return 0;
 }

@@ -40,23 +40,23 @@ int main() {
     t.restart();
     std::remove(vec.begin(), vec.end(), 1);
 
-    t.print("vector_remove");
+    t.print("remove");
     t.restart();
 
     std::remove(std::execution::seq, vec_for_seq.begin(), vec_for_seq.end(), 1);
 
-    t.print("vector_seq_remove");
+    t.print("seq_remove");
     t.restart();
 
     std::remove(std::execution::par, vec_for_par.begin(), vec_for_par.end(), 1);
 
-    t.print("vector_par_remove");
+    t.print("par_remove");
     t.restart();
 
     std::remove(std::execution::par_unseq, vec_for_par_unseq.begin(),
                 vec_for_par_unseq.end(), 1);
 
-    t.print("vector_par_unseq_remove");
+    t.print("par_unseq_remove");
   }
   return 0;
 }

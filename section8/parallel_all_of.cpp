@@ -37,7 +37,7 @@ int main() {
       vec_for_par_unseq.push_back(r);
     }
 
-    auto all_check = [](const auto &x) { return x < 20; };
+    auto all_check = [](const auto &x) { return x < vector_num; };
     auto print = [](auto &&x) {
       std::cout << x << std::endl;
       ;
@@ -46,25 +46,25 @@ int main() {
     t.restart();
     std::all_of(vec.begin(), vec.end(), all_check);
 
-    t.print("vector_all_of");
+    t.print("all_of");
     t.restart();
 
     std::all_of(std::execution::seq, vec_for_seq.begin(), vec_for_seq.end(),
                 all_check);
 
-    t.print("vector_seq_all_of");
+    t.print("seq_all_of");
     t.restart();
 
     std::all_of(std::execution::par, vec_for_par.begin(), vec_for_par.end(),
                 all_check);
 
-    t.print("vector_par_all_of");
+    t.print("par_all_of");
     t.restart();
 
     std::all_of(std::execution::par_unseq, vec_for_par_unseq.begin(),
                 vec_for_par_unseq.end(), all_check);
 
-    t.print("vector_par_unseq_all_of");
+    t.print("par_unseq_all_of");
   }
   return 0;
 }

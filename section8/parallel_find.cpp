@@ -15,6 +15,7 @@ auto int_rand = std::uniform_int_distribution<>(0, vector_num);
 
 int main() {
   timer t;
+  uint64_t sum = 0;
   for (uint64_t size = 100; size <= vector_num; size *= 10) {
     std::cout << "---" << size << "--- " << std::endl;
     std::vector<int> vec;
@@ -38,25 +39,28 @@ int main() {
     }
 
     t.restart();
-    std::find(vec.begin(), vec.end(), 1);
+    sum += *std::find(vec.begin(), vec.end(), 1);
 
-    t.print("vector_find");
+    t.print("find");
     t.restart();
 
-    std::find(std::execution::seq, vec_for_seq.begin(), vec_for_seq.end(), 1);
+    sum += *std::find(std::execution::seq, vec_for_seq.begin(),
+                      vec_for_seq.end(), 1);
 
-    t.print("vector_seq_find");
+    t.print("seq_find");
     t.restart();
 
-    std::find(std::execution::par, vec_for_par.begin(), vec_for_par.end(), 1);
+    sum += *std::find(std::execution::par, vec_for_par.begin(),
+                      vec_for_par.end(), 1);
 
-    t.print("vector_par_find");
+    t.print("par_find");
     t.restart();
 
-    std::find(std::execution::par_unseq, vec_for_par_unseq.begin(),
-              vec_for_par_unseq.end(), 1);
+    sum += *std::find(std::execution::par_unseq, vec_for_par_unseq.begin(),
+                      vec_for_par_unseq.end(), 1);
 
-    t.print("vector_par_unseq_find");
+    t.print("par_unseq_find");
   }
+  std::cout << sum << std::endl;
   return 0;
 }

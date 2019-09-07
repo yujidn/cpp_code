@@ -46,7 +46,7 @@ int main() {
       std::lower_bound(vec.begin(), vec.end(), k);
     }
 
-    t.print("vector_lower_bound");
+    t.print("lower_bound");
     // 2分探索を並列化できるのかな？って思ってたら無いらしい
     // t.restart();
 
@@ -55,7 +55,7 @@ int main() {
     //                    vec_for_seq.end(), k);
     // }
 
-    // t.print("vector_seq_lower_bound");
+    // t.print("seq_lower_bound");
     // t.restart();
 
     // for (const auto &k : key) {
@@ -63,7 +63,7 @@ int main() {
     //                    vec_for_par.end(), k);
     // }
 
-    // t.print("vector_par_lower_bound");
+    // t.print("par_lower_bound");
     // t.restart();
 
     // for (const auto &k : key) {
@@ -71,7 +71,7 @@ int main() {
     //                    vec_for_par_unseq.end(), k);
     // }
 
-    // t.print("vector_par_unseq_lower_bound");
+    // t.print("par_unseq_lower_bound");
   }
   return 0;
 }
