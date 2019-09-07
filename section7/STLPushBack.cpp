@@ -7,8 +7,8 @@
 
 #include "../timer/timer_class.hpp"
 
-// 10^5
-const uint64_t vector_num = 1000 * 100;
+// 10^8
+const uint64_t vector_num = 1000 * 1000 * 100;
 
 void vector_push_back(std::vector<int> &vec, const int size) {
   FUNC_TIMER;

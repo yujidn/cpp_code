@@ -5,8 +5,8 @@
 
 #include "../timer/timer_class.hpp"
 
-// 10^6
-const uint64_t vector_num = 1000 * 1000;
+// 10^3
+const uint64_t vector_num = 1000;
 // 10^3
 const size_t loop = 1000;
 std::random_device seed_gen;
@@ -40,15 +40,18 @@ void rotate(const double sin, const double cos,
 
 int main(void) {
   std::vector<std::pair<double, double>> vec;
+  double sum = 0.0;
   for (size_t i = 0; i < vector_num; ++i) {
+    sum += real_rand(engine);
     vec.push_back(std::make_pair(real_rand(engine), real_rand(engine)));
   }
 
-  // 45 degree
-  const double theta = 3.14 / 4;
+  const double theta = sum;
+  const auto sin = std::sin(theta);
+  const auto cos = std::cos(theta);
 
-  loop_time("rotate repoeat", loop, rotate_repeat, theta, vec);
-  loop_time("rotate", loop, rotate, std::sin(theta), std::cos(theta), vec);
+  loop_time("rotate repeat", loop, rotate_repeat, theta, vec);
+  loop_time("rotate", loop, rotate, sin, cos, vec);
 
   return 0;
 }

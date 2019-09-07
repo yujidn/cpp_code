@@ -17,38 +17,38 @@ std::random_device seed_gen;
 auto engine = std::mt19937_64(seed_gen());
 auto int_rand = std::uniform_int_distribution<>(0, vector_num);
 
-void vector_erase(std::vector<int> &vec, const std::vector<int> &insert_index) {
+void vector_erase(std::vector<int> &vec, const std::vector<int> &erase_index) {
   FUNC_TIMER;
-  for (const auto &index : insert_index) {
+  for (const auto &index : erase_index) {
     vec.erase(vec.begin() + (index % vec.size()));
   }
 }
-void list_erase(std::list<int> &list, const std::vector<int> &insert_index) {
+void list_erase(std::list<int> &list, const std::vector<int> &erase_index) {
   FUNC_TIMER;
-  for (const auto &index : insert_index) {
+  for (const auto &index : erase_index) {
     // これをやってしまうと激遅なので注意
     // list.erase(std::next(list.begin(), index % vec.size()), 1);
     list.erase(std::next(list.begin(), 0));
   }
 }
-void deque_erase(std::deque<int> &deque, const std::vector<int> &insert_index) {
+void deque_erase(std::deque<int> &deque, const std::vector<int> &erase_index) {
   FUNC_TIMER;
-  for (const auto &index : insert_index) {
+  for (const auto &index : erase_index) {
     deque.erase(deque.begin() + (index % deque.size()));
   }
 }
-void map_erase(std::map<int, int> &map, const std::vector<int> &insert_index) {
+void map_erase(std::map<int, int> &map, const std::vector<int> &erase_index) {
   FUNC_TIMER;
   const auto size = map.size();
-  for (const auto &index : insert_index) {
+  for (const auto &index : erase_index) {
     map.erase(index % map.size());
   }
 }
 void unorderd_map_erase(std::unordered_map<int, int> &unorderd_map,
-                        const std::vector<int> &insert_index) {
+                        const std::vector<int> &erase_index) {
   FUNC_TIMER;
   const auto size = unorderd_map.size();
-  for (const auto &index : insert_index) {
+  for (const auto &index : erase_index) {
     unorderd_map.erase(index % unorderd_map.size());
   }
 }
