@@ -4,11 +4,9 @@ project(CPPBookCode VERSION 1.0.0)
 # 基本オプション 
 SET( CMAKE_CXX_COMPILER g++ )
 # set(CMAKE_CXX_FLAGS "-std=c++14 -O3 -march=native")
-set(CMAKE_CXX_FLAGS "-std=c++14 -O2")
+set(CMAKE_CXX_FLAGS "-std=c++14 -O3")
 # 追加オプション
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
-# simd一式
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -msse -msse2 -msse3 -mssse3 -msse4.1 -msse4.2 -mavx -mfma")
 
 # コンパイルオプション基本セット
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic -Wcast-align -Wcast-qual -Wconversion -Wdisabled-optimization -Wendif-labels -Wfloat-equal -Winit-self -Winline -Wlogical-op -Wmissing-include-dirs -Wnon-virtual-dtor -Wold-style-cast -Woverloaded-virtual -Wpacked -Wpointer-arith -Wredundant-decls -Wshadow -Wsign-promo -Wswitch-default -Wswitch-enum -Wunsafe-loop-optimizations -Wvariadic-macros -Wwrite-strings ")
@@ -17,14 +15,15 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -msse -msse2 -msse3 -mssse3 -msse4.1 -ms
 # set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-g3 -Og -pg")
 # set(CMAKE_CXX_FLAGS_MINSIZEREL "-Os -s -DNDEBUG -march=native")
 
-
-add_executable(SIMDSample SIMDSample.cpp)
-add_executable(SIMDArithmetic SIMDArithmetic.cpp)
-add_executable(SIMDsegmentationFault SIMDsegmentationFault.cpp)
-add_executable(SIMDalignedByAllocator SIMDalignedByAllocator.cpp)
-add_executable(MatMulti MatMulti.cpp)
-add_executable(MatMultiNotAligned MatMultiNotAligned.cpp)
-add_executable(SIMDUnion SIMDUnion.cpp)
-add_executable(SIMDArray SIMDArray.cpp)
-
+add_executable(Output1char Output1char.cpp)
+add_executable(Output1charLF Output1charLF.cpp)
+add_executable(Output1Line Output1Line.cpp)
+add_executable(Output1LineLF Output1LineLF.cpp)
+add_executable(OutputAll OutputAll.cpp)
+add_executable(OutputAllLF OutputAllLF.cpp)
+add_executable(OutputBinary OutputBinary.cpp)
+add_executable(Input1char Input1char.cpp)
+add_executable(Input1Line Input1Line.cpp)
+add_executable(InputAll InputAll.cpp)
+add_executable(InputBinary InputBinary.cpp)
 
