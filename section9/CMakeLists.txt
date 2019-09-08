@@ -30,8 +30,10 @@ add_executable(SIMDArray SIMDArray.cpp)
 
 add_executable(opencv_rgb2gray opencv_rgb2gray.cpp)
 add_executable(normal_rgb2gray normal_rgb2gray.cpp)
+add_executable(simd_rgb2gray simd_rgb2gray.cpp)
 
 target_link_libraries(opencv_rgb2gray ${OpenCV_LIBS})
 target_link_libraries(normal_rgb2gray ${OpenCV_LIBS})
+target_link_libraries(simd_rgb2gray ${OpenCV_LIBS})
 
 
