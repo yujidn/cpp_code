@@ -6,8 +6,8 @@
 
 #include "../../timer/timer_class.hpp"
 
-// 10^7
-const uint64_t vector_num = 1000 * 1000 * 10;
+// 10^8
+const uint64_t vector_num = 1000 * 1000 * 100;
 
 std::random_device seed_gen;
 auto engine = std::mt19937_64(seed_gen());
