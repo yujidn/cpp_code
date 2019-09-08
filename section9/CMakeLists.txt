@@ -17,6 +17,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -msse -msse2 -msse3 -mssse3 -msse4.1 -ms
 # set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-g3 -Og -pg")
 # set(CMAKE_CXX_FLAGS_MINSIZEREL "-Os -s -DNDEBUG -march=native")
 
+find_package(OpenCV REQUIRED)
 
 add_executable(SIMDSample SIMDSample.cpp)
 add_executable(SIMDArithmetic SIMDArithmetic.cpp)
@@ -26,5 +27,9 @@ add_executable(MatMulti MatMulti.cpp)
 add_executable(MatMultiNotAligned MatMultiNotAligned.cpp)
 add_executable(SIMDUnion SIMDUnion.cpp)
 add_executable(SIMDArray SIMDArray.cpp)
+
+add_executable(opencv_rgb2gray opencv_rgb2gray.cpp)
+
+target_link_libraries(opencv_rgb2gray ${OpenCV_LIBS})
 
 
