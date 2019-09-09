@@ -19,6 +19,8 @@ echo
 echo
 ./STLPushBack
 echo
+./STLPushFront
+echo
 ./STLSearch
 echo
 ./STLsizeof
