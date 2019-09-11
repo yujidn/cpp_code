@@ -6,3 +6,7 @@ make
 ./memory       
 echo
 ./pipline     
+echo
+g++ -mavx analined.cpp -o analined
+./analined
+
