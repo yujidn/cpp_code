@@ -14,7 +14,7 @@ auto engine = std::mt19937_64(seed_gen());
 auto int_rand = std::uniform_int_distribution<>(0, 100);
 auto real_rand = std::uniform_real_distribution<>(0.0, 100.0);
 
-void Expansion(const std::vector<std::pair<int, int>> &vec,
+void expansion(const std::vector<std::pair<int, int>> &vec,
                std::vector<int> &result) {
   for (size_t j = 0; j < vec.size(); ++j) {
     auto &v = vec[j];
@@ -23,7 +23,7 @@ void Expansion(const std::vector<std::pair<int, int>> &vec,
     result[j] = a * a * a + 3 * a * a * b + 3 * a * b * b + b * b * b;
   }
 }
-void Factorization(const std::vector<std::pair<int, int>> &vec,
+void factorization(const std::vector<std::pair<int, int>> &vec,
                    std::vector<int> &result) {
   for (size_t j = 0; j < vec.size(); ++j) {
     auto &v = vec[j];
@@ -41,8 +41,8 @@ int main() {
   }
   std::vector<int> result(vec_i.size());
 
-  loop_time("expansion", loop, Expansion, vec_i, result);
-  loop_time("factorization", loop, Factorization, vec_i, result);
+  loop_time("expansion", loop, expansion, vec_i, result);
+  loop_time("factorization", loop, factorization, vec_i, result);
   std::cout << result[0] << std::endl;
 
   return 0;
