@@ -27,6 +27,8 @@ int main(void) {
   vec.push_back(show);
   std::cout << "push_back with construct" << std::endl;
   vec.push_back(2);
+  std::cout << "emplace_back" << std::endl;
+  vec.emplace_back(show);
   std::cout << "emplace_back with construct" << std::endl;
   vec.emplace_back(3);
 
