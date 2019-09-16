@@ -57,10 +57,10 @@ int main(void) {
 
   int sum = 0;
 
-  loop_time("every strlen", loop, every_strlen, str, sum);
-  loop_time("first strlen", loop, first_strlen, str, sum);
-  loop_time("every end", loop, every_end, vec, sum);
-  loop_time("first end", loop, first_end, vec, sum);
+  loop_time("every_strlen", loop, every_strlen, str, sum);
+  loop_time("first_strlen", loop, first_strlen, str, sum);
+  loop_time("every_end", loop, every_end, vec, sum);
+  loop_time("first_end", loop, first_end, vec, sum);
   loop_time("for_each", loop, for_each, vec, sum);
   loop_time("std_for_each", loop, std_for_each, vec, sum);
 

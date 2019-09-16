@@ -36,7 +36,7 @@ int main(void) {
   }
 
   int64_t sum = 0;
-  loop_time("no reference loop", loop, sum, no_reference_loop, vec);
+  loop_time("no_reference_loop", loop, sum, no_reference_loop, vec);
   loop_time("reference_loop", loop, sum, reference_loop, vec);
 
   std::cout << sum << std::endl;

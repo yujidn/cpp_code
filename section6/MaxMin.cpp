@@ -70,13 +70,13 @@ int main(void) {
   }
 
   int64_t sum = 0;  // 最適化防止
-  loop_time("std min", loop, sum, std_min, vec);
-  loop_time("std max", loop, sum, std_max, vec);
-  loop_time("std minmax", loop, sum, std_min_max, vec);
+  loop_time("std_min", loop, sum, std_min, vec);
+  loop_time("std_max", loop, sum, std_max, vec);
+  loop_time("std_minmax", loop, sum, std_min_max, vec);
 
-  loop_time("basic min", loop, sum, basic_min, vec);
-  loop_time("basic max", loop, sum, basic_max, vec);
-  loop_time("basic minmax", loop, sum, basic_min_max, vec);
+  loop_time("basic_min", loop, sum, basic_min, vec);
+  loop_time("basic_max", loop, sum, basic_max, vec);
+  loop_time("basic_minmax", loop, sum, basic_min_max, vec);
   std::cout << sum << std::endl;
   return 0;
 }

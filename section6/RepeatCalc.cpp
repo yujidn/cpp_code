@@ -50,7 +50,7 @@ int main(void) {
   const auto sin = std::sin(theta);
   const auto cos = std::cos(theta);
 
-  loop_time("rotate repeat", loop, rotate_repeat, theta, vec);
+  loop_time("rotate_repeat", loop, rotate_repeat, theta, vec);
   loop_time("rotate", loop, rotate, sin, cos, vec);
 
   return 0;

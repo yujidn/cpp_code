@@ -34,9 +34,9 @@ int main(void) {
     randvec[i] = real_rand(engine);
   }
 
-  loop_time("every new", loop, every_new, sum);
+  loop_time("every_new", loop, every_new, sum);
   double *vec = new double[vector_num];
-  loop_time("no new", loop, no_new, sum, vec);
+  loop_time("no_new", loop, no_new, sum, vec);
   delete[] vec;
 
   std::cout << sum << std::endl;

@@ -32,9 +32,9 @@ int main() {
   }
   int sum = 0;
 
-  loop_time("sequence access", loop, sum, sequence_access, vec, access);
+  loop_time("sequence_access", loop, sum, sequence_access, vec, access);
   std::shuffle(access.begin(), access.end(), engine);
-  loop_time("random access", loop, sum, sequence_access, vec, access);
+  loop_time("random_access", loop, sum, sequence_access, vec, access);
 
   std::cout << sum << std::endl;
   return 0;
