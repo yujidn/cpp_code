@@ -65,24 +65,26 @@ int main() {
     vec_l[i] = std::make_pair(static_cast<int64_t>(int_rand(engine)),
                               static_cast<int64_t>(shift_rand(engine)));
   }
-  std::cout << "---long---" << std::endl;
-  loop_time("long and", loop, (void (*)(decltype(vec_i) &))(And), vec_i);
-  loop_time("long or", loop, (void (*)(decltype(vec_i) &))(Or), vec_i);
-  loop_time("long not", loop, (void (*)(decltype(vec_i) &))(Not), vec_i);
-  loop_time("long exclusive", loop, (void (*)(decltype(vec_i) &))(Exclusive),
+  std::cout << "---int32_t---" << std::endl;
+  loop_time("int32_t and", loop, (void (*)(decltype(vec_i) &))(And), vec_i);
+  loop_time("int32_t or", loop, (void (*)(decltype(vec_i) &))(Or), vec_i);
+  loop_time("int32_t not", loop, (void (*)(decltype(vec_i) &))(Not), vec_i);
+  loop_time("int32_t exclusive", loop, (void (*)(decltype(vec_i) &))(Exclusive),
             vec_i);
-  loop_time("long lshift", loop, (void (*)(decltype(vec_i) &))(Lshift), vec_i);
-  loop_time("long rshift", loop, (void (*)(decltype(vec_i) &))(Rshift), vec_i);
+  loop_time("int32_t lshift", loop, (void (*)(decltype(vec_i) &))(Lshift),
+            vec_i);
+  loop_time("int32_t rshift", loop, (void (*)(decltype(vec_i) &))(Rshift),
+            vec_i);
 
-  std::cout << "---long long---" << std::endl;
-  loop_time("long long and", loop, (void (*)(decltype(vec_l) &))(And), vec_l);
-  loop_time("long long or", loop, (void (*)(decltype(vec_l) &))(Or), vec_l);
-  loop_time("long long not", loop, (void (*)(decltype(vec_l) &))(Not), vec_l);
-  loop_time("long long exclusive", loop,
-            (void (*)(decltype(vec_l) &))(Exclusive), vec_l);
-  loop_time("long long lshift", loop, (void (*)(decltype(vec_l) &))(Lshift),
+  std::cout << "---int64_t---" << std::endl;
+  loop_time("int64_t and", loop, (void (*)(decltype(vec_l) &))(And), vec_l);
+  loop_time("int64_t or", loop, (void (*)(decltype(vec_l) &))(Or), vec_l);
+  loop_time("int64_t not", loop, (void (*)(decltype(vec_l) &))(Not), vec_l);
+  loop_time("int64_t exclusive", loop, (void (*)(decltype(vec_l) &))(Exclusive),
             vec_l);
-  loop_time("long long rshift", loop, (void (*)(decltype(vec_l) &))(Rshift),
+  loop_time("int64_t lshift", loop, (void (*)(decltype(vec_l) &))(Lshift),
+            vec_l);
+  loop_time("int64_t rshift", loop, (void (*)(decltype(vec_l) &))(Rshift),
             vec_l);
 
   return 0;

@@ -48,7 +48,7 @@ int main() {
   }
   double sum = 0.0;
   loop_time("variance", loop, sum, variance, vec);
-  loop_time("expansion variance", loop, sum, expansion_variance, vec);
+  loop_time("expansion_variance", loop, sum, expansion_variance, vec);
 
   return 0;
 }

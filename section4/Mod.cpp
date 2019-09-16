@@ -40,14 +40,14 @@ int main() {
     vec_l2power[i] =
         std::make_pair(int_rand(engine), 1 << (int_rand(engine) % 31));
   }
-  std::cout << "---long---" << std::endl;
-  loop_time("long mod", loop, (void (*)(decltype(vec_i) &))(mod), vec_i);
-  loop_time("long mod2power", loop,
+  std::cout << "---int32_t---" << std::endl;
+  loop_time("int32_t mod", loop, (void (*)(decltype(vec_i) &))(mod), vec_i);
+  loop_time("int32_t mod2power", loop,
             (void (*)(decltype(vec_i2power) &))(mod2power), vec_i2power);
 
-  std::cout << "---long long---" << std::endl;
-  loop_time("long long mod", loop, (void (*)(decltype(vec_l) &))(mod), vec_l);
-  loop_time("long long mod2power", loop,
+  std::cout << "---int64_t---" << std::endl;
+  loop_time("int64_t mod", loop, (void (*)(decltype(vec_l) &))(mod), vec_l);
+  loop_time("int64_t mod2power", loop,
             (void (*)(decltype(vec_l2power) &))(mod2power), vec_l2power);
 
   return 0;

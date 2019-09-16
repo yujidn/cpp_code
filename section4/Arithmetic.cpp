@@ -56,17 +56,17 @@ int main() {
     vec_f[i] = std::make_pair(static_cast<float>(vec_d[i].first),
                               static_cast<float>(vec_d[i].second));
   }
-  std::cout << "---long---" << std::endl;
-  loop_time("long add", loop, (void (*)(decltype(vec_i) &))(add), vec_i);
-  loop_time("long sub", loop, (void (*)(decltype(vec_i) &))(sub), vec_i);
-  loop_time("long mul", loop, (void (*)(decltype(vec_i) &))(mul), vec_i);
-  loop_time("long div", loop, (void (*)(decltype(vec_i) &))(div), vec_i);
+  std::cout << "---int32_t---" << std::endl;
+  loop_time("int32_t add", loop, (void (*)(decltype(vec_i) &))(add), vec_i);
+  loop_time("int32_t sub", loop, (void (*)(decltype(vec_i) &))(sub), vec_i);
+  loop_time("int32_t mul", loop, (void (*)(decltype(vec_i) &))(mul), vec_i);
+  loop_time("int32_t div", loop, (void (*)(decltype(vec_i) &))(div), vec_i);
 
-  std::cout << "---long long---" << std::endl;
-  loop_time("long long add", loop, (void (*)(decltype(vec_l) &))(add), vec_l);
-  loop_time("long long sub", loop, (void (*)(decltype(vec_l) &))(sub), vec_l);
-  loop_time("long long mul", loop, (void (*)(decltype(vec_l) &))(mul), vec_l);
-  loop_time("long long div", loop, (void (*)(decltype(vec_l) &))(div), vec_l);
+  std::cout << "---int64_t---" << std::endl;
+  loop_time("int64_t add", loop, (void (*)(decltype(vec_l) &))(add), vec_l);
+  loop_time("int64_t sub", loop, (void (*)(decltype(vec_l) &))(sub), vec_l);
+  loop_time("int64_t mul", loop, (void (*)(decltype(vec_l) &))(mul), vec_l);
+  loop_time("int64_t div", loop, (void (*)(decltype(vec_l) &))(div), vec_l);
 
   std::cout << "---float---" << std::endl;
   loop_time("float add", loop, (void (*)(decltype(vec_f) &))(add), vec_f);
