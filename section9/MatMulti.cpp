@@ -10,10 +10,10 @@ std::random_device seed_gen;
 auto engine = std::mt19937_64(seed_gen());
 auto real_rand = std::uniform_real_distribution<>(-1.0, 1.0);
 
-void MatMulti(const std::vector<float, aligned_allocator<float>> &src1,
-              const std::vector<float, aligned_allocator<float>> &src2,
-              std::vector<float, aligned_allocator<float>> &dst,
-              const size_t &size) {
+void mat_mul(const std::vector<float, aligned_allocator<float>> &src1,
+             const std::vector<float, aligned_allocator<float>> &src2,
+             std::vector<float, aligned_allocator<float>> &dst,
+             const size_t &size) {
   FUNC_TIMER;
   size_t rows = size;
   size_t same = size;
@@ -26,10 +26,10 @@ void MatMulti(const std::vector<float, aligned_allocator<float>> &src1,
     }
   }
 }
-void MatMultiBySIMD(const std::vector<float, aligned_allocator<float>> &src1,
-                    const std::vector<float, aligned_allocator<float>> &src2,
-                    std::vector<float, aligned_allocator<float>> &dst,
-                    const size_t &size) {
+void mat_mul_by_simd(const std::vector<float, aligned_allocator<float>> &src1,
+                     const std::vector<float, aligned_allocator<float>> &src2,
+                     std::vector<float, aligned_allocator<float>> &dst,
+                     const size_t &size) {
   FUNC_TIMER;
   size_t rows = size;
   size_t same = size;
@@ -75,8 +75,8 @@ int main() {
     }
   }
 
-  MatMulti(src1, src2, result1, size);
-  MatMultiBySIMD(src1, src2, result2, size);
+  mat_mul(src1, src2, result1, size);
+  mat_mul_by_simd(src1, src2, result2, size);
 
   return 0;
 }

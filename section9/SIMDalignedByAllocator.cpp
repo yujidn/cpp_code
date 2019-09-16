@@ -6,8 +6,8 @@
 
 const size_t vector_num = 1024 * 1024;
 
-void CopyBySIMD(const std::vector<float, aligned_allocator<float>> &src,
-                std::vector<float, aligned_allocator<float>> &dst) {
+void copy_by_simd(const std::vector<float, aligned_allocator<float>> &src,
+                  std::vector<float, aligned_allocator<float>> &dst) {
   if (src.size() != dst.size()) {
     return;
   }
@@ -22,10 +22,11 @@ int main() {
     src[i] = i;
   }
   std::vector<float, aligned_allocator<float>> dst(vector_num);
-  std::cout << std::hex << reinterpret_cast<long long>(&src[0]) << ","
-            << reinterpret_cast<long long>(&dst[0]) << std::endl;
+  std::cout << std::hex << "src:" << reinterpret_cast<long long>(&src[0])
+            << "\n"
+            << "dst:" << reinterpret_cast<long long>(&dst[0]) << std::endl;
 
-  CopyBySIMD(src, dst);
+  copy_by_simd(src, dst);
 
   std::cout << dst[0] << std::endl;
 

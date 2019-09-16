@@ -4,6 +4,7 @@
 class ConstractShow {
  public:
   int val;
+  ConstractShow() { val = 0; }
   ConstractShow(int v) {
     val = v;
     std::cout << val << ","
@@ -21,7 +22,8 @@ class ConstractShow {
 
 int main(void) {
   ConstractShow show(1);
-  std::vector<ConstractShow> vec;
+  std::vector<ConstractShow> vec(1);
+  vec.reserve(10);
 
   std::cout << "push_back" << std::endl;
   vec.push_back(show);
