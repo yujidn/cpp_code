@@ -1,5 +1,5 @@
 #include <algorithm>
-#include <execution>  // 現段階ではこのヘッダを追加する必要がある
+#include <execution>
 #include <iostream>
 #include <random>
 #include <vector>
